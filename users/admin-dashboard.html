@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Merituno</title>
+    <link rel="stylesheet" href="/home-page/style.css" />
+    <link rel="stylesheet" href="/users/css/admin.css" />
+
+    <!-- Admin specific -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="../login/js/auth.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img src="../images/logo.png" alt="Merituno Logo" class="logo-icon" />
+          <h1>Merituno</h1>
+          <p>Admin Dashboard</p>
+        </div>
+        <nav>
+          <ul>
+            <li id="welcome-message">Welcome Admin</li>
+            <li class="profile-panel">
+              <div class="profile-toggle" id="profile-toggle">
+                <span id="profile-name">Admin User</span>
+              </div>
+              <div class="profile-dropdown" id="profile-dropdown">
+                <a href="#">Profile Settings</a>
+                <a href="#" id="logout-btn">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="dashboard-container">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h3>Management</h3>
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-item" data-section="dashboard-overview">
+              <span>📊 Dashboard</span>
+            </li>
+            <li class="sidebar-nav-item" data-section="user-management">
+              <span>👥 User Management</span>
+              <span class="count-badge" id="sidebar-user-count">0</span>
+            </li>
+            <li class="sidebar-nav-item" data-section="job-moderation">
+              <span>💼 Job Moderation</span>
+              <span class="count-badge" id="sidebar-job-count">0</span>
+            </li>
+            <li class="sidebar-nav-item" data-section="freelance-moderation">
+              <span>🔧 Freelance Moderation</span>
+              <span class="count-badge" id="sidebar-freelance-count">0</span>
+            </li>
+            <li class="sidebar-nav-item" data-section="learning-management">
+              <span>📚 Learning Management</span>
+              <span class="count-badge" id="sidebar-learning-count">0</span>
+            </li>
+            <li class="sidebar-nav-item" data-section="wallet-overview">
+              <span>💰 Wallet Overview</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>System</h3>
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-item" data-section="system-settings">
+              <span>⚙️ System Settings</span>
+            </li>
+            <li class="sidebar-nav-item" data-section="reports">
+              <span>📈 Reports & Analytics</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="dashboard-content">
+        <!-- Dashboard Overview Section -->
+        <section id="dashboard-overview" class="dashboard-section">
+          <div class="hero">
+            <div class="container">
+              <div class="hero-content">
+                <h2>Administrator Control Panel</h2>
+                <p>
+                  Manage users, monitor system performance, and configure
+                  platform settings.
+                </p>
+                <div class="hero-buttons">
+                  <button onclick="viewUsers()" class="cta-button">
+                    View All Users
+                  </button>
+                  <button onclick="manageRoles()" class="secondary-button">
+                    Manage User Roles
+                  </button>
+                  <button onclick="systemSettings()" class="secondary-button">
+                    System Settings
+                  </button>
+                </div>
+              </div>
+              <div class="hero-image">
+                <img src="../images/hero.jpg" alt="Admin Dashboard" />
+              </div>
+            </div>
+          </div>
+
+          <section class="stats">
+            <div class="container">
+              <div class="stat-item">
+                <h3 id="user-count">0</h3>
+                <p>Total Users</p>
+              </div>
+              <div class="stat-item">
+                <h3 id="active-count">0</h3>
+                <p>Active Today</p>
+              </div>
+              <div class="stat-item">
+                <h3 id="Candidate-count">0</h3>
+                <p>Candidate Users</p>
+              </div>
+              <div class="stat-item">
+                <h3 id="employer-count">0</h3>
+                <p>Employer Users</p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- User Management Section -->
+        <section
+          id="user-management"
+          class="dashboard-section"
+          style="display: none"
+        >
+          <div class="section-header">
+            <h2>User Management</h2>
+            <p>Manage all users, roles, and permissions</p>
+          </div>
+
+          <div class="section-content">
+            <div class="user-management-tools">
+              <div class="search-box">
+                <input
+                  type="text"
+                  id="user-search"
+                  placeholder="Search by name, email, or role..."
+                />
+                <button onclick="fetchAllUsers()">Refresh</button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="users-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Star Level</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="users-table-body">
+                  <tr>
+                    <td colspan="6" class="text-center">
+                      Select "Refresh" to load users
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Job Moderation Section -->
+        <section
+          id="job-moderation"
+          class="dashboard-section"
+          style="display: none"
+        >
+          <div class="section-header">
+            <h2>Job Moderation</h2>
+            <p>Review and moderate job postings</p>
+          </div>
+          <div class="section-content">
+            <div id="jobs-container">
+              <div class="loading">Click "Refresh" to load jobs</div>
+            </div>
+            <div class="action-buttons">
+              <button onclick="fetchAllJobs()" class="cta-button">
+                Refresh Jobs
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Freelance Moderation Section -->
+        <section
+          id="freelance-moderation"
+          class="dashboard-section"
+          style="display: none"
+        >
+          <div class="section-header">
+            <h2>Freelance Moderation</h2>
+            <p>Review and moderate freelance projects</p>
+          </div>
+          <div class="section-content">
+            <div id="freelance-container">
+              <div class="loading">Click "Refresh" to load freelance tasks</div>
+            </div>
+            <div class="action-buttons">
+              <button onclick="fetchAllFreelanceTasks()" class="cta-button">
+                Refresh Freelance Tasks
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Learning Management Section -->
+        <section
+          id="learning-management"
+          class="dashboard-section"
+          style="display: none"
+        >
+          <div class="section-header">
+            <h2>Learning Management</h2>
+            <p>Create and manage learning modules</p>
+          </div>
+          <div class="section-content">
+            <div class="learning-tools">
+              <button class="cta-button" onclick="showCreateModuleForm()">
+                Create New Module
+              </button>
+            </div>
+
+            <form
+              id="create-module-form"
+              class="module-form"
+              onsubmit="handleCreateModule(event)"
+              style="display: none"
+            >
+              >
+              <h3>Create Learning Module</h3>
+
+              <div class="form-group">
+                <label for="module-title">Title *</label>
+                <input type="text" id="module-title" required />
+                <span class="error-message" id="module-title-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="module-description">Description *</label>
+                <textarea id="module-description" rows="3" required></textarea>
+                <span
+                  class="error-message"
+                  id="module-description-error"
+                ></span>
+              </div>
+
+              <div class="form-group">
+                <label for="module-skills">Skill Tags (comma separated)</label>
+                <input
+                  type="text"
+                  id="module-skills"
+                  placeholder="e.g., JavaScript, React, Node.js"
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="module-star-level">Star Level Required</label>
+                  <select id="module-star-level">
+                    <option value="1">★</option>
+                    <option value="2">★★</option>
+                    <option value="3">★★★</option>
+                    <option value="4">★★★★</option>
+                    <option value="5">★★★★★</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="module-xp-reward">XP Reward</label>
+                  <input
+                    type="number"
+                    id="module-xp-reward"
+                    min="0"
+                    value="100"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Video Links (YouTube URLs)</label>
+                <div id="video-links-container">
+                  <div class="video-link-container">
+                    <input type="url" placeholder="YouTube URL" required />
+                    <button type="button" class="remove-video-link">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="add-video-link"
+                  onclick="addVideoLink()"
+                >
+                  + Add Another Video
+                </button>
+              </div>
+
+              <div class="form-group">
+                <label>Quiz Questions</label>
+                <div id="quiz-questions-container">
+                  <div class="quiz-question-container">
+                    <input type="text" placeholder="Question" required />
+                    <input type="text" placeholder="Correct answer" required />
+                    <button type="button" class="remove-quiz-question">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="add-quiz-question"
+                  onclick="addQuizQuestion()"
+                >
+                  + Add Another Question
+                </button>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="cta-button">Create Module</button>
+                <button
+                  type="button"
+                  class="secondary-button"
+                  onclick="closeCreateModule()"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+
+            <div id="modules-container">
+              <div class="loading">Loading learning modules...</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Wallet Overview Section -->
+        <section
+          id="wallet-overview"
+          class="dashboard-section"
+          style="display: none"
+        >
+          <div class="section-header">
+            <h2>Wallet Overview</h2>
+            <p>Monitor financial transactions and balances</p>
+          </div>
+          <div class="section-content">
+            <div class="wallet-stats">
+              <div class="stat-card">
+                <h3 id="total-system-money">$0.00</h3>
+                <p>Total Money in System</p>
+              </div>
+              <div class="stat-card">
+                <h3 id="total-employer-spends">$0.00</h3>
+                <p>Total Employer Spends</p>
+              </div>
+              <div class="stat-card">
+                <h3 id="total-candidate-earnings">$0.00</h3>
+                <p>Total Candidate Earnings</p>
+              </div>
+            </div>
+
+            <div class="wallet-actions">
+              <button id="refresh-stats" class="secondary-button">
+                Refresh Stats
+              </button>
+              <button id="refresh-transactions" class="secondary-button">
+                Refresh Transactions
+              </button>
+            </div>
+
+            <div class="adjust-balance-form">
+              <h3>Adjust User Balance</h3>
+              <form
+                id="adjust-balance-form"
+                onsubmit="handleAdjustBalance(event)"
+              >
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="user-type">User Type</label>
+                    <select id="user-type" required>
+                      <option value="">Select Type</option>
+                      <option value="candidate">Candidate</option>
+                      <option value="employer">Employer</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="user-id">User ID</label>
+                    <input
+                      type="text"
+                      id="user-id"
+                      placeholder="Enter user ID"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="adjustment-type">Adjustment Type</label>
+                    <select id="adjustment-type" required>
+                      <option value="add">Add Funds</option>
+                      <option value="remove">Remove Funds</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="adjustment-amount">Amount ($)</label>
+                    <input
+                      type="number"
+                      id="adjustment-amount"
+                      min="0.01"
+                      step="0.01"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="adjustment-description">Description</label>
+                  <textarea
+                    id="adjustment-description"
+                    rows="2"
+                    placeholder="Reason for adjustment"
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="cta-button">
+                  Apply Adjustment
+                </button>
+              </form>
+            </div>
+
+            <div class="transaction-history">
+              <h3>Recent Transactions</h3>
+              <div class="table-container">
+                <table class="transactions-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>User ID</th>
+                      <th>Type</th>
+                      <th>Transaction Type</th>
+                      <th>Amount</th>
+                      <th>Description</th>
+                      <th>Processed By</th>
+                    </tr>
+                  </thead>
+                  <tbody id="transactions-container">
+                    <tr>
+                      <td colspan="7" class="text-center">
+                        Loading transactions...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="how-it-works">
+          <div class="container">
+            <h2>Recent Activity</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h3>User Registrations</h3>
+                  <p>5 new users joined in the last 24 hours</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h3>System Alerts</h3>
+                  <p>No critical issues detected. System running smoothly.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h3>Performance Metrics</h3>
+                  <p>Server response time: 128ms. Uptime: 99.98%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- System Settings Section -->
+        <section
+          id="system-settings"
+          class="dashboard-section"
+          style="display: none"
+        >
+          <div class="section-header">
+            <h2>System Settings</h2>
+            <p>Configure platform settings and preferences</p>
+          </div>
+          <div class="section-content">
+            <p>System settings content will be loaded here.</p>
+          </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section id="reports" class="dashboard-section" style="display: none">
+          <div class="section-header">
+            <h2>Reports & Analytics</h2>
+            <p>View system reports and analytics</p>
+          </div>
+          <div class="section-content">
+            <p>Reports and analytics content will be loaded here.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Edit Module Modal -->
+    <div id="edit-module-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Edit Learning Module</h2>
+        <form id="edit-module-form" onsubmit="handleEditModule(event)">
+          <div class="form-group">
+            <label for="edit-module-title">Title *</label>
+            <input type="text" id="edit-module-title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-module-description">Description *</label>
+            <textarea id="edit-module-description" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-module-skills">Skill Tags (comma separated)</label>
+            <input
+              type="text"
+              id="edit-module-skills"
+              placeholder="e.g., JavaScript, React, Node.js"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-module-star-level">Star Level Required</label>
+              <select id="edit-module-star-level">
+                <option value="1">★</option>
+                <option value="2">★★</option>
+                <option value="3">★★★</option>
+                <option value="4">★★★★</option>
+                <option value="5">★★★★★</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-module-xp-reward">XP Reward</label>
+              <input
+                type="number"
+                id="edit-module-xp-reward"
+                min="0"
+                value="100"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Video Links (YouTube URLs)</label>
+            <div id="edit-video-links-container">
+              <!-- Dynamic content will be added here -->
+            </div>
+            <button type="button" class="add-video-link">
+              + Add Another Video
+            </button>
+          </div>
+
+          <div class="form-group">
+            <label>Quiz Questions</label>
+            <div id="edit-quiz-questions-container">
+              <!-- Dynamic content will be added here -->
+            </div>
+            <button type="button" class="add-quiz-question">
+              + Add Another Question
+            </button>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="cta-button">Update Module</button>
+            <button
+              type="button"
+              class="secondary-button close-modal"
+              onclick="closeEditModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Merituno</h3>
+            <p>Learn • Earn • Grow</p>
+          </div>
+          <div class="footer-section">
+            <h4>Admin Resources</h4>
+            <ul>
+              <li>
+                <a href="#" class="policy-link" data-policy="privacy"
+                  >System Logs</a
+                >
+              </li>
+              <li>
+                <a href="#" class="policy-link" data-policy="terms"
+                  >Audit Trail</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Support</h4>
+            <p>admin@merituno.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Merituno. All rights reserved. | Admin Dashboard</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/users/js/admin/main.js"></script>
+    <script src="/users/js/admin/users.js"></script>
+    <script src="/users/js/admin/jobs.js"></script>
+    <script src="/users/js/admin/freelance.js"></script>
+    <script src="/users/js/admin/learning.js"></script>
+    <script src="/users/js/admin/wallet.js"></script>
+  </body>
+</html>

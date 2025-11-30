@@ -1,0 +1,1190 @@
+/* employer.css - EMPLOYER specific styles only */
+
+
+/* ===== EMPLOYER HEADER STYLES ===== */
+.user-employer header {
+    background: white !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    padding: 35px 0 !important;
+}
+
+
+.user-employer header .container {
+    display: flex !important;
+    justify-content: space-between !important; /* CHANGED: space between for left/right positioning */
+    align-items: center !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+
+.user-employer .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-right: auto !important; /* ADDED: push to left */
+}
+
+
+.user-employer .logo img {
+    height: 40px !important;
+    width: auto !important;
+}
+
+
+.user-employer .logo h1 {
+    font-size: 1.5rem !important;
+    color: #333 !important;
+    margin: 0 !important;
+    font-weight: 600 !important;
+}
+
+
+.user-employer .logo p {
+    font-size: 0.9rem !important;
+    color: #666 !important;
+    margin: 0 !important;
+}
+
+
+/* Navigation */
+.user-employer nav ul {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-left: auto !important; /* ADDED: push to right */
+}
+
+
+.user-employer #welcome-message {
+    font-weight: 500 !important;
+    color: #333 !important;
+    font-size: 0.95rem !important;
+}
+
+
+/* Profile Panel */
+.user-employer .profile-panel {
+    position: relative !important;
+}
+
+
+.user-employer .profile-dropdown {
+    display: none !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 100% !important;
+    background: white !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    width: 280px !important;
+    z-index: 1001 !important;
+    margin-top: 10px !important;
+}
+
+
+.user-employer .profile-dropdown.show {
+    display: block !important;
+}
+
+
+.user-employer .profile-header {
+    display: flex !important;
+    align-items: center !important;
+    padding-bottom: 15px !important;
+    border-bottom: 1px solid #e9ecef !important;
+    margin-bottom: 15px !important;
+    gap: 15px !important;
+}
+
+
+.user-employer .profile-info {
+    flex: 1 !important;
+}
+
+
+.user-employer .profile-info strong {
+    display: block !important;
+    color: #333 !important;
+    margin-bottom: 4px !important;
+}
+
+
+.user-employer .profile-info div {
+    color: #666 !important;
+    font-size: 0.9rem !important;
+}
+
+
+.user-employer .profile-completion {
+    margin-bottom: 15px !important;
+}
+
+
+.user-employer .d-flex {
+    display: flex !important;
+}
+
+
+.user-employer .justify-content-between {
+    justify-content: space-between !important;
+}
+
+
+.user-employer .progress {
+    height: 8px !important;
+    background-color: #e9ecef !important;
+    border-radius: 4px !important;
+    margin-bottom: 10px !important;
+    overflow: hidden !important;
+}
+
+
+.user-employer .progress-bar {
+    height: 100% !important;
+    border-radius: 4px !important;
+    background-color: #007bff !important;
+    transition: width 0.3s ease !important;
+}
+
+
+/* ===== EMPLOYER FOOTER STYLES ===== */
+.user-employer footer {
+    background: #2c3e50 !important;
+    color: white !important;
+    padding: 40px 0 20px !important;
+    margin-top: 40px !important;
+}
+
+
+.user-employer footer .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+
+.user-employer .footer-content {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+
+.user-employer .footer-section h3 {
+    color: white !important;
+    margin-bottom: 15px !important;
+    font-size: 1.3rem !important;
+}
+
+
+.user-employer .footer-section h4 {
+    color: white !important;
+    margin-bottom: 15px !important;
+    font-size: 1.1rem !important;
+}
+
+
+.user-employer .footer-section p {
+    color: #bdc3c7 !important;
+    line-height: 1.6 !important;
+    margin-bottom: 10px !important;
+}
+
+
+.user-employer .footer-section ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+.user-employer .footer-section ul li {
+    margin-bottom: 8px !important;
+}
+
+
+.user-employer .footer-section ul li a {
+    color: #bdc3c7 !important;
+    text-decoration: none !important;
+    transition: color 0.3s !important;
+}
+
+
+.user-employer .footer-section ul li a:hover {
+    color: white !important;
+}
+
+
+.user-employer .footer-bottom {
+    border-top: 1px solid #34495e !important;
+    padding-top: 20px !important;
+    text-align: center !important;
+    color: #bdc3c7 !important;
+    font-size: 0.9rem !important;
+}
+
+
+.user-employer .footer-bottom p {
+    margin: 0 !important;
+}
+
+
+/* ===== EMPLOYER SPECIFIC COMPONENT STYLES ===== */
+
+
+/* Company Card */
+.user-employer .company-card {
+    background: white !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    margin-bottom: 20px !important;
+}
+
+
+.user-employer .company-card h3 {
+    margin-top: 0 !important;
+    color: #333 !important;
+    margin-bottom: 10px !important;
+}
+
+
+.user-employer .company-card p {
+    color: #666 !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0 !important;
+}
+
+
+.user-employer .company-card a {
+    color: #007bff !important;
+    text-decoration: none !important;
+}
+
+
+.user-employer .company-card a:hover {
+    text-decoration: underline !important;
+}
+
+
+/* Stats Section */
+.user-employer .stats .container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 20px !important;
+    margin-bottom: 30px !important;
+}
+
+
+.user-employer .stat-item {
+    background: white !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    text-align: center !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+
+.user-employer .stat-item h3 {
+    font-size: 2rem !important;
+    color: #007bff !important;
+    margin: 0 0 10px 0 !important;
+    font-weight: 600 !important;
+}
+
+
+.user-employer .stat-item p {
+    color: #666 !important;
+    margin: 0 !important;
+    font-size: 0.9rem !important;
+}
+
+
+/* Recent Activity - CHANGED: Fixed styling */
+.user-employer .how-it-works h2 {
+    color: #333 !important;
+    margin-bottom: 20px !important;
+}
+
+
+.user-employer .steps {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
+
+
+.user-employer .step {
+    display: flex !important;
+    gap: 15px !important;
+    align-items: flex-start !important;
+}
+
+
+.user-employer .step-number {
+    background: #007bff !important;
+    color: white !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-weight: 600 !important;
+    flex-shrink: 0 !important;
+}
+
+
+.user-employer .step-content h3 {
+    margin: 0 0 8px 0 !important;
+    color: #333 !important;
+    font-size: 1.1rem !important;
+}
+
+
+.user-employer .step-content p {
+    margin: 0 !important;
+    color: #666 !important;
+    line-height: 1.5 !important;
+}
+
+
+/* ===== CUSTOM EMPLOYER STYLES ===== */
+
+
+/* Blue icons and bigger profile circle */
+.user-employer .profile-panel .fa-user-circle {
+    color: #4361ee !important;
+    font-size: 2rem !important;
+}
+
+
+.user-employer .profile-header .fa-building {
+    color: #4361ee !important;
+    font-size: 2.5rem !important;
+}
+
+
+/* Dropdown styles */
+.user-employer .profile-dropdown .cta-button.small {
+    background: #4361ee !important;
+    color: white !important;
+    margin-bottom: 10px !important;
+}
+
+
+.user-employer .profile-dropdown .cta-button.small:hover {
+    background: #3a0ca3 !important;
+}
+
+
+/* Remove separate logout button */
+.user-employer .cta-button.secondary {
+    display: none !important;
+}
+
+
+/* Logout in dropdown */
+.user-employer .logout-dropdown {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 10px !important;
+    background: #dc3545 !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+    margin-top: 10px !important;
+    font-weight: 500 !important;
+}
+
+
+.user-employer .logout-dropdown:hover {
+    background: #c82333 !important;
+    color: white !important;
+}
+
+
+/* ===== NUCLEAR HEADER POSITIONING ===== */
+.user-employer header {
+    position: relative !important;
+    width: 100% !important;
+}
+
+
+.user-employer .logo {
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+}
+
+
+.user-employer nav {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1001 !important;
+}
+
+
+.user-employer header .container {
+    position: relative !important;
+    height: 100% !important;
+}
+
+
+/* ===== FIX HEADER POSITIONING ===== */
+.user-employer header .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+
+.user-employer .logo {
+    margin-right: auto !important;
+}
+
+
+.user-employer nav {
+    margin-left: auto !important;
+}
+
+
+/* ===== FIX RECENT ACTIVITY STYLING ===== */
+/* Target the ordered list in activity section */
+.user-employer .activity-card ol,
+.user-employer .dashboard-content ol {
+    list-style-type: decimal !important;
+    padding-left: 25px !important;
+    margin: 20px 0 !important;
+}
+
+
+.user-employer .activity-card li,
+.user-employer .dashboard-content li {
+    margin-bottom: 20px !important;
+    padding: 15px !important;
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+    border-left: 3px solid #4361ee !important;
+}
+
+
+.user-employer .activity-card li:last-child,
+.user-employer .dashboard-content li:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+.user-employer .activity-card strong,
+.user-employer .dashboard-content strong {
+    color: #333 !important;
+    font-weight: 600 !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+    font-size: 1.1rem !important;
+}
+
+
+.user-employer .activity-card p,
+.user-employer .dashboard-content p {
+    color: #666 !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+
+/* Fix any nested lists */
+.user-employer .activity-card ul,
+.user-employer .dashboard-content ul {
+    list-style-type: disc !important;
+    padding-left: 20px !important;
+    margin: 10px 0 !important;
+}
+
+
+.user-employer .activity-card ul li,
+.user-employer .dashboard-content ul li {
+    background: none !important;
+    border-left: none !important;
+    padding: 2px 0 !important;
+    margin-bottom: 5px !important;
+}
+
+/* Dashboard Stats Styles */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #007bff;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Make sure your HTML has these IDs */
+
+/* Dashboard Stats Styles */
+.stats .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-item {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #007bff;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Recent Activity Styles */
+.recent-activity {
+    margin-top: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.activity-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.activity-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.filter-btn:hover {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.filter-btn.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.activity-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-badge i {
+    color: #007bff;
+}
+
+.activity-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.activity-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.activity-item[data-read="false"] {
+    background: #f8fdff;
+    border-left-color: #28a745;
+}
+
+.activity-item[data-read="false"]::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #28a745;
+    border-radius: 50%;
+}
+
+.activity-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #007bff;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.activity-icon.completed {
+    background: #28a745;
+}
+
+.activity-icon.payment {
+    background: #17a2b8;
+}
+
+.activity-icon.urgent {
+    background: #dc3545;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.activity-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    flex: 1;
+}
+
+.activity-time {
+    color: #666;
+    font-size: 14px;
+}
+
+.activity-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.activity-badge.new {
+    background: #d4edda;
+    color: #155724;
+}
+
+.activity-badge.completed {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.activity-badge.paid {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.activity-badge.urgent {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.activity-content p {
+    margin: 0 0 12px 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.activity-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+.meta-item i {
+    color: #007bff;
+}
+
+.message-preview {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #007bff;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.activity-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-small.primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-small.secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-small.warning {
+    background: #ffc107;
+    color: #212529;
+}
+
+.btn-small:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.activity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-text:hover {
+    color: #0056b3;
+}
+
+/* Scrollbar styling */
+.activity-feed::-webkit-scrollbar {
+    width: 6px;
+}
+
+.activity-feed::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.activity-feed::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.activity-feed::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Add to employer.css */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* Add to employer.css - Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    border-left: 4px solid #28a745;
+    animation: slideInRight 0.3s ease-out;
+}
+
+.notification.error {
+    border-left-color: #dc3545;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notification i {
+    font-size: 18px;
+}
+
+.notification.success i {
+    color: #28a745;
+}
+
+.notification.error i {
+    color: #dc3545;
+}
+
+.close-notification {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    margin-left: 10px;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Wallet Styles */
+.wallet-balance-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.wallet-balance-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.balance-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.wallet-topup-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.topup-form {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.topup-form .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.transactions-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-description {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.transaction-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.transaction-amount.positive {
+    color: #10b981;
+}
+
+.transaction-amount.negative {
+    color: #ef4444;
+}
+
+.no-transactions {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .topup-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .balance-amount {
+        font-size: 2.5rem;
+    }
+    
+    .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .transaction-amount {
+        align-self: flex-end;
+    }
+}
+
+/* Fix wallet section visibility */
+.wallet-topup-section,
+.transactions-section {
+    display: block !important;
+}
+
+/* Send Money Section */
+.wallet-send-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.send-money-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.send-money-form .form-group {
+    margin-bottom: 0;
+}
+
+.send-info {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.send-info p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Force wallet sections to be visible */
+.wallet-topup-section,
+.wallet-send-section,
+.transactions-section {
+    display: block !important;
+}
+
+/* Prevent shaking and ensure smooth interactions */
+.wallet-section .card-action,
+.withdraw-btn,
+.export-btn {
+    transition: all 0.2s ease-in-out !important;
+}
+
+.wallet-section .card-action:hover,
+.withdraw-btn:hover, 
+.export-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.wallet-section .card-action:active,
+.withdraw-btn:active,
+.export-btn:active {
+    transform: translateY(0) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* Ensure modals don't cause layout shifts */
+.modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* Prevent rapid re-renders */
+.wallet-section .content-grid {
+    contain: layout style paint;
+}

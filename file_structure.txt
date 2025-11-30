@@ -1,0 +1,51 @@
+Merituno/
+├── home-page/
+│   ├── index.html
+│   |── style.css
+│   └── js/
+│       └── main.js
+├── login/
+│   ├── index.html
+│   ├── signup.html
+│   ├── forgot-password.html
+│   ├── reset-password.html
+│   ├── css/
+│   │   └── auth.css
+│   └── js/
+│       ├── auth.js
+│       ├── signin.js
+│       ├── signup.js
+│       ├── forgot-password.js
+│       └── reset-password.js
+├── users/
+│   ├── admin-dashboard.html
+│   ├── member-dashboard.html
+│   ├── employer-dashboard.html
+│   ├── css/
+│   │   └── users.css
+│   └── js/
+│       ├── member/
+│       │   ├── main.js
+│       │   ├── learning.js
+│       │   ├── jobs.js
+│       │   ├── freelance.js
+│       │   └── wallet.js
+│       ├── employer/
+│       │   ├── main.js
+│       │   ├── applications.js
+│       │   ├── jobs.js
+│       │   ├── freelance.js
+│       │   └── wallet.js
+│       └── admin/
+│           ├── main.js
+│           ├── learning.js
+│           ├── jobs.js
+│           ├── freelance.js
+│           ├── wallet.js
+│           └── users.js
+├── images/
+│   ├── logo.png
+│   ├── logo1.png
+│   └── hero.jpg
+└── app.js
+|----README.md

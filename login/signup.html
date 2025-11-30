@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Merituno</title>
+    <link rel="stylesheet" href="./css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/signup.js" defer></script>
+    <style>
+        /* Dropdown-specific styling that won't affect other pages */
+        #role {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--medium-gray);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: var(--light-gray);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+            cursor: pointer;
+        }
+        
+        #role:focus {
+            border-color: #4285f4;
+            outline: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        /* Background styling like forgot-password */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: 
+                linear-gradient(135deg, rgba(67, 97, 238, 0.9) 0%, rgba(58, 12, 163, 0.8) 100%),
+                url('../images/hero.jpg') center/cover no-repeat;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form-container">
+            <div class="auth-header">
+                <img src="../images/logo1.png" alt="Merituno Logo" class="logo" style="height: 120px;">
+                <h2>Join Merituno</h2>
+                <p>Create your account to get started</p>
+            </div>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">I am a</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="member">Member</option>
+                        <option value="employer">Employer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <div class="show-password" style="margin-top: 0.5rem;">
+                        <input type="checkbox" id="show-passwords">
+                        <label for="show-passwords" style="display: inline; margin-left: 0.5rem;">Show Passwords</label>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="index.html" class="link">Sign In</a></p>
+                </div>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+                <div id="success-message" class="success-message" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

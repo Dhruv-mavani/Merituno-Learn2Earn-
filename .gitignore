@@ -1,0 +1,13 @@
+# Hide real firebase credentials
+login/js/aauth.js
+login/js/aauth*.js
+aauth.js
+
+# Node modules
+node_modules/
+
+# Environment files (future safe)
+*.env
+.env*
+*.local
+*.secret
